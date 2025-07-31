@@ -4,6 +4,24 @@ A Dzogchen learning and practice application featuring Rigpa AI chat, Dzogchen t
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup Instructions
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`
+   - Add your OpenAI API key to `.env`
+   - Get your API key from [OpenAI API Keys](https://platform.openai.com/api-keys)
+4. Start the development server: `npm start`
+
+## Features
+
+- **Rigpa AI Chat**: Interactive AI assistant for Dzogchen-related questions
+- **Dzogchen Terms Dictionary**: Comprehensive glossary of Buddhist terms
+- **Tibetan Alphabet Learning**: Interactive Tibetan script reference
+- **Spiritual Gallery**: Collection of deity images and lineage masters
+- **Rich Text Editor**: Built-in editor for notes and practice journals
+
 ## Available Scripts
 
 In the project directory, you can run:
