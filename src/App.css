@@ -1020,26 +1020,40 @@ button:disabled {
   border-radius: 8px;
   background-color: #111111;
   overflow: hidden;
+  position: relative;
 }
 
 .dzogchen-grid {
   height: 100%;
   overflow-y: auto;
   overflow-x: auto;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .grid-header {
   display: grid;
-  grid-template-columns: 60px 200px 150px 200px 1fr 120px;
+  grid-template-columns: 60px 200px 150px 200px 300px 120px; /* Fixed consistent widths */
   background-color: #1e40af;
   position: sticky;
   top: 0;
   z-index: 10;
+  border-bottom: 2px solid #333;
+}
+
+.grid-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.grid-content {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .grid-row {
   display: grid;
-  grid-template-columns: 60px 200px 150px 200px 1fr 120px;
+  grid-template-columns: 60px 200px 150px 200px 300px 120px; /* Exact match with header */
   border-bottom: 1px solid #333;
 }
 
@@ -1054,7 +1068,7 @@ button:disabled {
   align-items: center;
   min-height: 50px;
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: normal; /* Changed from break-word to normal */
 }
 
 .header-cell {
@@ -1088,6 +1102,9 @@ button:disabled {
   font-size: 13px;
   line-height: 1.4;
   color: #e5e7eb;
+  text-align: left;
+  white-space: normal;
+  word-break: normal;
 }
 
 .actions-cell {
@@ -1862,6 +1879,192 @@ button:disabled {
     padding: 6px 8px;
     font-size: 11px;
     min-width: 40px;
+  }
+
+  /* Mobile Dzogchen Terms Grid - Horizontal Scrolling */
+  .dzogchen-grid-container {
+    padding: 8px;
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 100%;
+    max-width: calc(100vw - 300px); /* Account for menu panel */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  .dzogchen-grid {
+    min-width: 1030px; /* Total width of all columns */
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .grid-header {
+    display: grid !important;
+    grid-template-columns: 60px 200px 150px 200px 300px 120px; /* Match desktop exactly */
+    min-width: 1030px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #1e40af;
+    border-bottom: 2px solid #333;
+  }
+
+  .grid-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .grid-row {
+    display: grid !important;
+    grid-template-columns: 60px 200px 150px 200px 300px 120px; /* Exact match */
+    min-width: 1030px;
+    border-bottom: 1px solid #333;
+  }
+
+  .grid-cell {
+    padding: 8px 6px !important;
+    border-right: 1px solid #333;
+    font-size: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.4;
+    word-break: normal !important; /* Override desktop word-break */
+    box-sizing: border-box; /* Ensure consistent box model */
+    min-width: 0; /* Allow content to shrink */
+  }
+
+  .grid-cell:last-child {
+    border-right: none;
+  }
+
+  /* Specific column styling for mobile */
+  .grid-cell.tibetan-text {
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: "Noto Sans Tibetan", "Microsoft Himalaya", "Tibetan Machine Uni", serif;
+    word-break: normal !important;
+    min-width: 160px; /* Ensure adequate space for Tibetan text */
+  }
+
+  .grid-cell.wiley-text {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    word-break: normal !important;
+    min-width: 120px;
+  }
+
+  .grid-cell.translation-cell {
+    font-size: 12px;
+    line-height: 1.4;
+    word-break: normal !important;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    text-align: left;
+    white-space: normal;
+    min-width: 180px; /* Ensure adequate space for translations */
+  }
+
+  .grid-cell.actions-cell {
+    text-align: center;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .grid-cell button {
+    margin: 1px;
+    padding: 8px 10px;
+    font-size: 12px;
+    min-width: 35px;
+    border-radius: 4px;
+    cursor: pointer;
+    touch-action: manipulation; /* Better touch interaction */
+  }
+
+  /* Mobile edit inputs */
+  .edit-input {
+    width: 100%;
+    padding: 6px;
+    font-size: 12px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    background-color: #2d2d2d;
+    color: white;
+    border-radius: 4px;
+  }
+
+  /* Header text adjustments for mobile */
+  .grid-header .grid-cell {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 6px;
+    color: white;
+  }
+
+  /* Scrollbar styling for mobile */
+  .dzogchen-grid::-webkit-scrollbar,
+  .dzogchen-grid-container::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  .dzogchen-grid::-webkit-scrollbar-track,
+  .dzogchen-grid-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+  }
+
+  .dzogchen-grid::-webkit-scrollbar-thumb,
+  .dzogchen-grid-container::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+  }
+
+  .dzogchen-grid::-webkit-scrollbar-thumb:hover,
+  .dzogchen-grid-container::-webkit-scrollbar-thumb:hover {
+    background: #777;
+  }
+
+  /* Mobile edit form */
+  .edit-form {
+    display: block !important;
+    background-color: #1a1a1a;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 2px solid #fbbf24;
+  }
+
+  .edit-form label {
+    display: block;
+    width: 100% !important;
+    margin-bottom: 10px;
+    color: #fbbf24;
+    font-weight: bold;
+  }
+
+  .edit-form input,
+  .edit-form textarea {
+    width: 100% !important;
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .edit-form .form-actions {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .edit-form button {
+    margin: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
   }
 }
 
