@@ -327,16 +327,17 @@ const DzogchenTermsMainContent: React.FC<DzogchenTermsMainContentProps> = ({ onC
               <div className="grid-cell header-cell">English Translation</div>
               <div className="grid-cell header-cell">Actions</div>
             </div>
-            {filteredTerms.length === 0 ? (
-              <div className="no-data">
-                {searchQuery.trim() ? 
-                  `No terms found matching "${searchQuery}". Try a different search term.` :
-                  "No terms available. Click \"Add New Term\" to get started."
-                }
-              </div>
-            ) : (
-              filteredTerms.map((term) => (
-                <div key={term.id} className="grid-row">
+            <div className="grid-content">
+              {filteredTerms.length === 0 ? (
+                <div className="no-data">
+                  {searchQuery.trim() ? 
+                    `No terms found matching "${searchQuery}". Try a different search term.` :
+                    "No terms available. Click \"Add New Term\" to get started."
+                  }
+                </div>
+              ) : (
+                filteredTerms.map((term) => (
+                  <div key={term.id} className="grid-row">
                   {editingId === term.id ? (
                     // Edit mode
                     <>
@@ -395,6 +396,7 @@ const DzogchenTermsMainContent: React.FC<DzogchenTermsMainContentProps> = ({ onC
                 </div>
               ))
             )}
+            </div>
           </div>
         </div>
       </div>
