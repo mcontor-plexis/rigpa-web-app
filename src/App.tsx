@@ -448,6 +448,45 @@ const App = () => {
       alt: 'Master 5', 
       title: 'Yeshe Tsogyal',
       description: 'Yeshe Tsogyal (also known as Khandro Yeshe Tsogyal) was the principal consort and spiritual partner of Guru Rinpoche. She was instrumental in receiving, preserving, and hiding many of the treasure teachings. As a fully realized dakini, she represents the wisdom aspect of enlightenment and is revered as the "Mother of all Buddhas" in the Nyingma tradition.'
+    },
+    {
+      id: 6,
+      src: `${process.env.PUBLIC_URL}/JigmeLingpa.jpg`,
+      alt: 'Master 6',
+      title: 'Jigme Lingpa',
+      description: 'Jigme Lingpa (1730–1798) was one of the most important tertöns and masters of the Nyingma school. He revealed the Longchen Nyingthig cycle of teachings, which became the heart-essence of Dzogchen practice for countless practitioners. His life and writings embody the union of scholarship, realization, and compassionate activity.'
+    }
+    ,
+    {
+      id: 7,
+      src: `${process.env.PUBLIC_URL}/Mandarava.jpg`,
+      alt: 'Master 7',
+      title: 'Mandarava',
+      description: 'Mandarava was a renowned Indian princess and realized consort of Guru Padmasambhava. She attained the rainbow body and is revered as a wisdom dakini, embodying the qualities of realization, devotion, and the transmission of profound teachings. Her life story inspires practitioners to pursue the path of enlightenment with courage and compassion.'
+    }
+    ,
+    {
+      id: 8,
+      src: `${process.env.PUBLIC_URL}/Saraha.jpg`,
+      alt: 'Master 8',
+      title: 'Saraha',
+      description: 'Saraha was one of the earliest and most celebrated Indian Mahasiddhas, renowned for his realization of the nature of mind and his poetic songs of awakening. His teachings on spontaneous presence and direct experience laid the foundation for many later Dzogchen and Mahamudra traditions. Saraha’s life exemplifies the power of realization beyond conventional boundaries.'
+    }
+    ,
+    {
+      id: 9,
+      src: `${process.env.PUBLIC_URL}/MachigLabdron.jpg`,
+      alt: 'Master 9',
+      title: 'Machig Labdrön',
+      description: 'Machig Labdrön (1055–1149) was a renowned Tibetan yogini and the founder of the Chöd practice. Her teachings emphasize cutting through ego-clinging and fear, and her life is celebrated for its profound realization, compassion, and the transmission of unique methods for direct liberation. Machig Labdrön is revered as a wisdom dakini and a model of spiritual courage.'
+    }
+    ,
+    {
+      id: 10,
+      src: `${process.env.PUBLIC_URL}/GarabDorje.jpg`,
+      alt: 'Master 10',
+      title: 'Garab Dorje',
+      description: 'Garab Dorje (Prahevajra) is regarded as the first human teacher of Dzogchen, the Great Perfection. He received the direct transmission of the Dzogchen teachings and passed them on to his disciple Manjushrimitra. Garab Dorje’s legacy is the foundational Dzogchen instructions, emphasizing direct introduction to the nature of mind and the path of spontaneous presence.'
     }
   ];
 
