@@ -9,6 +9,9 @@ type Message = {
 };
 
 const App = () => {
+  // Contemporary Masters modal and info state
+  const [showContemporaryMastersModal, setShowContemporaryMastersModal] = useState(false);
+  const [showContemporaryInfo, setShowContemporaryInfo] = useState<number | null>(null);
   // Check if API key is available
   const hasApiKey = Boolean(process.env.REACT_APP_OPENAI_API_KEY);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -130,10 +133,12 @@ const App = () => {
   };
 
   const handleSubMenuClick = (parentLabel: string, subItem: string) => {
-    if (parentLabel === 'Gallery' && subItem === 'Deity Collection') {
+    if (parentLabel === 'Galleries' && subItem === 'Deity Collection') {
       setShowGalleryModal(true);
-    } else if (parentLabel === 'Gallery' && subItem === 'Lineage Masters') {
+    } else if (parentLabel === 'Galleries' && subItem === 'Lineage Masters') {
       setShowLineageMastersModal(true);
+    } else if (parentLabel === 'Galleries' && subItem === 'Contemporary Masters') {
+      setShowContemporaryMastersModal(true);
     } else if (parentLabel === 'Tibetan Grammer' && subItem === 'Tibetan Alphabet') {
       setShowTibetanAlphabetModal(true);
     }
@@ -332,8 +337,8 @@ const App = () => {
     },
     {
       id: 'gallery',
-      label: 'Gallery',
-      subItems: ['Deity Collection', 'Lineage Masters']
+      label: 'Galleries',
+      subItems: ['Deity Collection', 'Lineage Masters', 'Contemporary Masters']
     },
     { id: 'help', label: 'Editor', subItems: [] },
   ];
@@ -410,6 +415,59 @@ const App = () => {
       title: 'Padmasambhava Rainbow Body',
       description: 'Padmasambhava manifesting the rainbow body represents the ultimate achievement in Dzogchen practice - the dissolution of the physical body into pure light at the time of death. This rainbow light body symbolizes the complete realization of the nature of mind and the perfect integration of wisdom and compassion beyond all conceptual limitations.'
     }
+  ];
+
+  // Contemporary masters data
+  const contemporaryMasters = [
+    {
+      id: 7,
+      src: `${process.env.PUBLIC_URL}/ChogyamTrungpaRinpoche.jpg`,
+      alt: 'Chogyam Trungpa',
+      title: 'Chogyam Trungpa',
+      info: 'Chögyam Trungpa Rinpoche (1939–1987), the 11th Trungpa tulku, fled Tibet in 1959, studied at Oxford, and co-founded Scotland’s Samye Ling. After renouncing monastic vows, he moved to North America, founded Naropa University and Shambhala Training, wrote influential books, taught “crazy wisdom,” shaping Western Buddhism.'
+    },
+    {
+      id: 4,
+      src: `${process.env.PUBLIC_URL}/ChagdudRinpoche.jpg`,
+      alt: 'Chagdud Rinpoche',
+      title: 'Chagdud Rinpoche',
+      info: 'Chagdud Tulku Rinpoche (1930–2002) was a Nyingma master and the 14th Chagdud incarnation. He fled Tibet in 1959, aided refugees in India, and moved to the United States in 1979. He founded Chagdud Gonpa Foundation, emphasized Red Tara and Vajrakilaya, established Brazil’s Khadro Ling, and wrote Lord of the Dance.'
+    },
+    {
+      id: 5,
+      src: `${process.env.PUBLIC_URL}/DudjomRinpoche.jpg`,
+      alt: 'Dudjom Rinpoche',
+      title: 'Dudjom Rinpoche',
+      info: 'Dudjom Rinpoche (Jigdral Yeshe Dorje, 1904–1987) was a preeminent Nyingma master, tertön, and scholar. Recognized as Dudjom Lingpa’s reincarnation, he preserved and taught the Dudjom Tersar. After 1959 exile, he taught across India, Nepal, Europe, and North America, serving as Nyingma’s head in exile, and authored foundational histories of Nyingma.'
+    },
+    {
+      id: 6,
+      src: `${process.env.PUBLIC_URL}/HisHolinessPenorRinpoche.jpg`,
+      alt: 'His Holiness Penor Rinpoche',
+      title: 'His Holiness Penor Rinpoche',
+      info: 'His Holiness Penor Rinpoche (1932–2009), the 11th throne holder of the Palyul lineage, was born in Powo, Kham. After fleeing Tibet, he founded Namdroling Monastery in South India. Supreme Head of the Nyingma school from 1993 to 2001, he was renowned for Dzogchen teachings and ordained thousands, passing in 2009.'
+    },
+    {
+      id: 1,
+      src: `${process.env.PUBLIC_URL}/GyaltrulRinpoche.jpg`,
+      alt: 'Gyaltrul Rinpoche',
+      title: 'Gyaltrul Rinpoche',
+      info: 'Gyaltrul Rinpoche (1925–2023), a senior Nyingma Palyul master, was recognized as the tulku Sampa Künkyap. After fleeing Tibet in 1959 and years in India, he moved to the U.S., founding Tashi Choling and Orgyen Dorje Den, serving Dudjom Rinpoche’s lineage, teaching Dzogchen, and authoring Meditation, Transformation, and Dream Yoga.'
+    },
+    {
+      id: 2,
+      src: `${process.env.PUBLIC_URL}/ChatrulRinpoche.jpg`,
+      alt: 'Chatrul Rinpoche',
+      title: 'Chatrul Rinpoche',
+      info: 'Chatral Rinpoche (Chatral Sangye Dorje, 1913–2015) was a renowned Nyingma Dzogchen master and reclusive yogi, a lineage holder of Longchen Nyingtik and Dudjom Tersar. Born in Kham, he lived mainly in Nepal and India, advocated strict vegetarianism and life release, taught widely yet avoided institutions, and passed away in Pharping.'
+    },
+    {
+      id: 3,
+      src: `${process.env.PUBLIC_URL}/YangthangRinpoche.jpg`,
+      alt: 'Yangthang Rinpoche',
+      title: 'Yangthang Rinpoche',
+      info: 'Yangthang Rinpoche (1930–2016) was a highly revered Nyingma Palyul master from Sikkim, recognized as the reincarnation of tertön Dorje Dechen Lingpa of Dhomang Monastery. Imprisoned for twenty-two years after 1959, he was released in 1981, later teaching widely worldwide, preserving Dzogchen transmissions, and inspiring disciples until his passing in 2016.'
+    },
   ];
 
   // Lineage masters data
@@ -1088,6 +1146,45 @@ const App = () => {
         </div>
       )}
 
+      {/* Contemporary Masters Modal */}
+      {showContemporaryMastersModal && (
+        <div className="gallery-modal-overlay" onClick={closeAllModals}>
+          <div className="gallery-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="gallery-modal-header">
+              <h2>Contemporary Masters</h2>
+              <button className="close-button" onClick={() => setShowContemporaryMastersModal(false)}>×</button>
+            </div>
+            <div className="gallery-grid">
+              {contemporaryMasters.map((master) => (
+                <div key={master.id} className="gallery-item">
+                  <img 
+                    src={master.src} 
+                    alt={master.alt}
+                    onClick={() => {
+                      openFullScreenImage(master.src, master.title, master);
+                      setShowDeityInfo(false);
+                    }}
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      const placeholder = e.currentTarget.nextElementSibling as HTMLElement;
+                      if (placeholder) {
+                        placeholder.style.display = 'flex';
+                      }
+                    }}
+                  />
+                  <div className="image-placeholder" style={{ display: 'none' }}>
+                    📷<br />
+                    {master.title}<br />
+                    <small>Image not found</small>
+                  </div>
+                  <h3>{master.title}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Tibetan Alphabet Modal */}
       {showTibetanAlphabetModal && (
         <div className="gallery-modal-overlay" onClick={closeAllModals}>
@@ -1538,7 +1635,7 @@ const App = () => {
                   </button>
                 </div>
                 <div className="deity-info-content">
-                  <p>{currentDeityInfo.description}</p>
+                  <p>{currentDeityInfo.description || currentDeityInfo.info}</p>
                 </div>
               </div>
             )}
