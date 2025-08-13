@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/rigpa-web-app/static/css/main.e06b1067.css",
+    "main.js": "/rigpa-web-app/static/js/main.def519a2.js",
+    "index.html": "/rigpa-web-app/index.html",
+    "main.e06b1067.css.map": "/rigpa-web-app/static/css/main.e06b1067.css.map",
+    "main.def519a2.js.map": "/rigpa-web-app/static/js/main.def519a2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e06b1067.css",
+    "static/js/main.def519a2.js"
+  ]
+}
